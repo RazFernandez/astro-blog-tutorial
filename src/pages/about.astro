@@ -1,18 +1,23 @@
 ---
 import titlePages from "../ts/titlePages";
 import { MyUser } from "../ts/person";
+import '../styles/global.css';
 
 const [home, about, blog] = titlePages;
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-const hobbies = ["photography", "birdwatching", "baseball"];
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Flutter"];
+const hobbies = ["Programming", "Video Editing", "Reading"];
 
-let identity = new MyUser("Sarah", "Canada", "Technical Writter");
+let identity: MyUser = new MyUser("Miguel", "México", "Software Engineer");
 identity.addHobbies(hobbies);
 identity.addSkills(skills);
 
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor: string = "navy";
+const fontWeight: string = "bold";
+const textCase: string = "uppercase";
 ---
 
 <html lang="en">
@@ -20,6 +25,17 @@ const goal = 3;
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>{about.tabTitle}</title>
+        <style define:vars={{ skillColor, fontWeight, textCase }}>
+            h1 {
+                color: green;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
     </head>
     <body>
         <a href="/">{home.bodyTitle}</a>
@@ -50,7 +66,11 @@ const goal = 3;
 
         <p>My skills are:</p>
         <ul>
-            {identity.getSkills().map((skill) => <li>{skill}</li>) || "Xd"}
+            {
+                identity
+                    .getSkills()
+                    .map((skill) => <li class="skill">{skill}</li>) || "Xd"
+            }
         </ul>
 
         {happy && <p>I am happy to be learning Astro!</p>}
