@@ -1,0 +1,19 @@
+---
+import Social from "./Social.astro";
+
+// const platform: string[] = ["github", "linkedin"];
+// const username: string[] = ["RazFernandez", "mrfern%C3%A1ndez"];
+---
+
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+<footer>
+    <Social platform="github" username="RazFernandez" />
+    <Social platform="linkedin" username="mrfern%C3%A1ndez" />
+</footer>
